@@ -42,12 +42,21 @@ public class PigLatin {
         //precondition: sWord is a valid String of length greater than 0
         //postcondition: returns the pig latin equivalent of sWord
         // more code should go here
-	
-	if(findFirstVowel(sWord) == -1) {
+	if(sWord.substring(0, 2).equals("qu")) {
+		return sWord.substring(2) + sWord.substring(0, 2) + "ay";
+	}
+	else if(findFirstVowel(sWord) == 0) {
+		return sWord + "way";
+	}
+	else if(findFirstVowel(sWord) == -1) {
 		return sWord + "ay";
 	}
 	else {
-		return "ERROR!";
+		return sWord.substring(findFirstVowel) + sWord.substring(0, findFirstVowel(sWord)) + "ay";
 	}
     }
 }//end PigLatin class
+// For words that are all consonants, simply add "ay" to the end of the word. Thus, "try" becomes "tryay".
+// For words that begin with vowels, simply add "way" to the end of the word. Thus, "a" becomes "away"; "at" becomes "atway"; "ermine" becomes "ermineway."
+// For words beginning with "qu," move the "qu" to the end of the word and add ay. Thus "question" becomes "estionquay".
+// For words that begin with consonants, move the leading consonant(s) to the end of the word and add "ay." Thus, "ball" becomes "allbay"; "button" becomes "uttonbay"; "star" becomes "arstay"; "three" becomes "eethray";
